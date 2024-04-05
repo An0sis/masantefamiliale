@@ -1,0 +1,86 @@
+/* styles.css */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+header a {
+    color: #333;
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+}
+
+.profile .profile-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.profile-info {
+    margin-left: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 600px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.maladies {
+    background-color: #ebe9e979;
+    flex: 2;
+    margin-right: 10px;
+}
+
+.genealogy {
+    background-color: #ebe9e979;
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
