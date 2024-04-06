@@ -6,5 +6,6 @@ from accounts.views import LoginView
 
 urlpatterns = [
     path("", views.index, name="home"),
-    path("login/", LoginView.as_view(), name="login")
+    path("login/", LoginView.as_view(), name="login"),
+    path("", views.familypage, name="family")
 ]

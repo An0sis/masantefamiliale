@@ -1,7 +1,23 @@
 <!-- templates/registration/login.html -->
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Log In</button>
-</form>
+<!DOCTYPE>
+<html>
+
+<head>
+  {% load static %}
+  <title>MaSantéFamiliale</title>
+  <link rel="stylesheet" href="{% static 'styles/login_styles.css' %}">
+</head>
+
+<body>
+  <div class="form-container">
+    <form method="post">
+      <h1>Log In</h1>
+      {% csrf_token %}
+      {{ form.username.label_tag }} {{ form.username }}
+      {{ form.password.label_tag }} {{ form.password }}
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+</body>
+
+</html>
