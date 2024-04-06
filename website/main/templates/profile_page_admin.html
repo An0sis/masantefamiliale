@@ -2,14 +2,17 @@
 <html>
 
 <head>
+    {% load static %}
     <title>MaSantéFamiliale</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'styles/profiles_styles.css' %}">
 </head>
 
 <body>
+    {% block content %}
+    {% if user.is_authenticated %}
     <header>
         <div class="logo">
-            <a href="monprofile.html"><img src="assets/logo.jpg" alt="MySantéFamilialeLogo"></a>
+            <a href="monprofile.html"><img src="{% static 'image/logo.jpg' %}" alt="MySantéFamilialeLogo"></a>
         </div>
         <nav>
             <ul>
@@ -23,7 +26,7 @@
         <section class="profile">
             <div class="profile-header">
                 <h1>Profile de Théo</h1>
-                <img src="assets/head_people.jpg" alt="Théo">
+                <img src="{% static 'image/head_people.jpg' %}" alt="Théo">
             </div>
             <div class="profile-info">
                 <h2 class="name">Théo Gross</h2>
@@ -39,6 +42,7 @@
             <div class="genealogy">
                 <div class="tree">
                     <h3>Arbre généalogique</h3>
+                    <img src="{% static 'image/family_tree.jpg' %}" alt="Arbre généalogique">
                 </div>
                 <div class="maladiesfamille">
                     <h3>Antécédents Médicaux Familiaux</h3>
@@ -47,8 +51,16 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2021 MaSantéFamiliale</p>
+        <p>&copy; 2024 MaSantéFamiliale</p>
     </footer>
+    {% else %}
+    <!-- redirect to the accounts/templates/registration/login.html -->
+    {% url 'login' as login_url %}
+    <script>
+        window.location.href = "{{ login_url }}";
+    </script>
+    {% endif %}
+    {% endblock %}
 </body>
 
 </html>
