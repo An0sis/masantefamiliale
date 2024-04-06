@@ -10,39 +10,24 @@
 <body>
 {% block content %}
     {% if user.is_authenticated %}
-    <header>
-        <div class="logo">
-            <a href="monprofile.html"><img src="{% static 'image/logo.jpg' %}" alt="MySantéFamilialeLogo"></a>
-        </div>
-        <nav>
-            <ul>
-                <li class="profile-link"><a href="">Profile de Théo</a></li>
-                <li><a href="family">Famille de Théo</a></li>
-                <li><a href="contact.html">Contacts</a></li>
-            </ul>
-        </nav>
-        <!-- <div class="wave"></div> -->
-    </header>
-    <main>
-        <section class="profile">
-            <div class="profile-header">
-                <h1>Profile de Théo Gross</h1>
-                <img src="{% static 'image/head_people.jpg' %}" alt="Théo">
+        <header>
+            <div class="logo">
+                <a href="monprofile.html"><img src="{% static 'image/logo.jpg' %}" alt="MySantéFamilialeLogo"></a>
             </div>
-            <div class="profile-info">
-                <p>Age: 20 ans</p>
-                <p>Sex: Homme</p>
-                <p>Groupe sanguin: O+</p>
-            </div>
-        </section>
-        <section class="details">
-            <div class="maladies">
-                <h3>Antécédents Médicaux Personnels</h3>
-            </div>
-            <div class="genealogy">
-                <div class="tree">
-                    <h3>Arbre généalogique</h3>
-                    <img src="{% static 'image/family_tree.png' %}" alt="Arbre généalogique">
+            <nav>
+                <ul>
+                    <li class="profile-link"><a href="">Profile de Théo</a></li>
+                    <li><a href="family">Famille de Théo</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </nav>
+            <!-- <div class="wave"></div> -->
+        </header>
+        <main>
+            <section class="profile">
+                <div class="profile-header">
+                    <h1>Profile de Théo Gross</h1>
+                    <img src="{% static 'image/head_people.jpg' %}" alt="Théo">
                 </div>
                 <div class="profile-info">
                     <p>Age: 20 ans</p>
@@ -72,16 +57,16 @@
                 <input id="btnsearch" class="btn btn-outline-success me-2" type="submit" value="Search">
             </form>
             {% if result %}
-                    {% for row in result %}
-                        <table>
-                            <tr>
-                                <td>{{ row.user }}</td>
-                                <td>{{ row.name }}</td>
-                            </tr>
-                        </table>
-                    {% endfor %}
+                {% for row in result %}
+                    <table>
+                        <tr>
+                            <td>{{ row.user }}</td>
+                            <td>{{ row.name }}</td>
+                        </tr>
+                    </table>
+                {% endfor %}
             {% elif error %}
-                <p>{{  error }}</p>
+                <p>{{ error }}</p>
             {% endif %}
         </main>
         <footer>
