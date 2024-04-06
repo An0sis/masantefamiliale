@@ -9,3 +9,6 @@ def index(request):
 
 # Create your views here.
 
+def familypage(request):
+    template = loader.get_template('family_page_admin.html')
+    return HttpResponse(template.render({}, request))

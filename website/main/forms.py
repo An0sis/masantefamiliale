@@ -39,3 +39,9 @@ class CombinedForm(UserCreationForm):
         if commit:
             client.save()
         return user
+
+from django import forms
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Username", widget=forms.TextInput(attrs={'class': 'username'}))
+    password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput(attrs={'class': 'password'}))
