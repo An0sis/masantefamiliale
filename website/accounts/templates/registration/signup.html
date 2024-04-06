@@ -5,7 +5,17 @@
 <h2>Sign up</h2>
 <form method="post">
   {% csrf_token %}
-  {{ form }}
+    {% if form.errors %}
+        <p>ERRORS</p>
+        {{ form.errors }}
+    {% endif %}
+  {{ form.username.label_tag }} {{ form.username }}
+  {{ form.password1.label_tag }} {{ form.password1 }}
+  {{ form.password2.label_tag }} {{ form.password2 }}
+  <!-- Add your Client model fields here -->
+  {{ form.email.label_tag }} {{ form.email }}
+  {{ form.phone.label_tag }} {{ form.phone }}
+  {{ form.address.label_tag }} {{ form.address }}
   <button type="submit">Sign Up</button>
 </form>
 {% endblock %}
