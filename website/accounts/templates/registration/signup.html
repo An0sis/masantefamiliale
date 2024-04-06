@@ -2,25 +2,24 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-    {% if form.errors %}
-        <p>ERRORS</p>
-        {{ form.errors }}
-    {% endif %}
-  {{ form.username.label_tag }} {{ form.username }}
-  {{ form.password1.label_tag }} {{ form.password1 }}
-  {{ form.password2.label_tag }} {{ form.password2 }}
-  <!-- Add your Client model fields here -->
-  {{ form.email.label_tag }} {{ form.email }}
-  {{ form.phone.label_tag }} {{ form.phone }}
-{{ form.name.label_tag }} {{ form.name }}
-{{ form.lastname.label_tag }} {{ form.lastname }}
-{{ form.father_name.label_tag }} {{ form.father_name }}
-{{ form.mother_name.label_tag }} {{ form.mother_name }}
-{{ form.brother_sister.label_tag }} {{ form.brother_sister }}
+    <h2>Sign up</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <p>ERRORS</p>
+            {{ form.errors }}
+        {% endif %}
+        {{ form.username.label_tag }} {{ form.username }}
+        {{ form.password1.label_tag }} {{ form.password1 }}
+        <!-- Add your Client model fields here -->
+        {{ form.name.label_tag }} {{ form.name }}
+        {{ form.lastname.label_tag }} {{ form.lastname }}
+        {{ form.birthdate.label_tag }} {{ form.birthdate }}
+        {{ form.father_name.label_tag }} {{ form.father_name }}
+        {{ form.mother_name.label_tag }} {{ form.mother_name }}
+        {{ form.brother_sister.label_tag }} {{ form.brother_sister }}
+        {{ form.diseases.label_tag }} {{ form.diseases }}
 
-  <button type="submit">Sign Up</button>
-</form>
+        <button type="submit">Sign Up</button>
+    </form>
 {% endblock %}

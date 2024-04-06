@@ -16,7 +16,7 @@ class Client(models.Model):
     phone = models.CharField(max_length=15, blank=True, null=True)
     name = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
-    age = models.IntegerField(blank=True, null=True)
+    birthdate = models.DateField(default='2000-01-01')
     father_name = models.CharField(max_length=50, blank=True, null=True)
     mother_name = models.CharField(max_length=50, blank=True, null=True)
     brother_sister = models.TextField(default='[]', blank=True, null=True)

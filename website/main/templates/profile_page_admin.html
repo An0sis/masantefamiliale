@@ -17,7 +17,7 @@
             <nav>
                 <ul>
                     <li class="profile-link"><a href="">Profile de Théo</a></li>
-                    <li><a href="family">Famille de Théo</a></li>
+                    <li><a href="family">Famille de {{ user.client.name }}</a></li>
                     <li><a href="contact.html">Contacts</a></li>
                 </ul>
             </nav>
@@ -38,6 +38,24 @@
             <section class="details">
                 <div class="maladies">
                     <h3>Antécédents Médicaux Personnels</h3>
+                    {% for disease in user_diseases %}
+                        <p>{{ disease.name }}</p>
+                    {% empty %}
+                        <p>No personal medical history</p>
+                    {% endfor %}
+                    <h3>Antecedents Medicaux Familiaux</h3>
+                    <h4>Father's medical history</h4>
+                    {% for disease in father_diseases %}
+                        <p>{{ disease.name }}</p>
+                    {% empty %}
+                        <p>No father's medical history</p>
+                    {% endfor %}
+                    <h4>Mother's medical history</h4>
+                    {% for disease in mother_diseases %}
+                        <p>{{ disease.name }}</p>
+                    {% empty %}
+                        <p>No mother's medical history</p>
+                    {% endfor %}
                 </div>
                 <div class="genealogy">
                     <div class="tree">
@@ -58,12 +76,7 @@
             </form>
             {% if result %}
                 {% for row in result %}
-                    <table>
-                        <tr>
-                            <td>{{ row.user }}</td>
-                            <td>{{ row.name }}</td>
-                        </tr>
-                    </table>
+                    <p>{{ row }}</p>
                 {% endfor %}
             {% elif error %}
                 <p>{{ error }}</p>
