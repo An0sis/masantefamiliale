@@ -8,59 +8,78 @@
 </head>
 
 <body>
-    {% block content %}
+{% block content %}
     {% if user.is_authenticated %}
-    <header>
-        <div class="logo">
-            <a href="monprofile.html"><img src="{% static 'image/logo.jpg' %}" alt="MySantéFamilialeLogo"></a>
-        </div>
-        <nav>
-            <ul>
-                <li class="profile-link"><a href="">Profile de Théo</a></li>
-                <li><a href="family_page_admin.html">Famille de Théo</a></li>
-                <li><a href="contact.html">Contacts</a></li>
-            </ul>
-        </nav>
-        <!-- <div class="wave"></div> -->
-    </header>
-    <main>
-        <section class="profile">
-            <div class="profile-header">
-                <h1>Profile de Théo Gross</h1>
-                <img src="{% static 'image/head_people.jpg' %}" alt="Théo">
+        <header>
+            <div class="logo">
+                <a href="monprofile.html"><img src="{% static 'image/logo.jpg' %}" alt="MySantéFamilialeLogo"></a>
             </div>
-            <div class="profile-info">
-                <p>Age: 20 ans</p>
-                <p>Sex: Homme</p>
-                <p>Groupe sanguin: O+</p>
-            </div>
-        </section>
-        <section class="details">
-            <div class="maladies">
-                <h3>Antécédents Médicaux Personnels<h3>
-            </div>
-            <div class="genealogy">
-                <div class="tree">
-                    <h3>Arbre généalogique</h3>
-                    <img src="{% static 'image/family_tree.png' %}" alt="Arbre généalogique">
+            <nav>
+                <ul>
+                    <li class="profile-link"><a href="">Profile de Théo</a></li>
+                    <li><a href="family_page_admin.html">Famille de Théo</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </nav>
+            <!-- <div class="wave"></div> -->
+        </header>
+        <main>
+            <section class="profile">
+                <div class="profile-header">
+                    <h1>Profile de Théo Gross</h1>
+                    <img src="{% static 'image/head_people.jpg' %}" alt="Théo">
                 </div>
-                <div class="maladiesfamille">
-                    <h3>Antécédents Médicaux Familiaux</h3>
+                <div class="profile-info">
+                    <p>Age: 20 ans</p>
+                    <p>Sex: Homme</p>
+                    <p>Groupe sanguin: O+</p>
                 </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 MaSantéFamiliale</p>
-    </footer>
+            </section>
+            <section class="details">
+                <div class="maladies">
+                    <h3>Antécédents Médicaux Personnels</h3>
+                </div>
+                <div class="genealogy">
+                    <div class="tree">
+                        <h3>Arbre généalogique</h3>
+                        <img src="{% static 'image/family_tree.png' %}" alt="Arbre généalogique">
+                    </div>
+                    <div class="maladiesfamille">
+                        <h3>Antécédents Médicaux Familiaux</h3>
+                    </div>
+                </div>
+            </section>
+            <form class="d-flex" role="search" action="" method="post">
+                {% csrf_token %}
+                <input class="form-control me-2" type="text" name="txtquery" value="{{ input_str }}"
+                       placeholder="Search"
+                       aria-label="Search">
+                <input id="btnsearch" class="btn btn-outline-success me-2" type="submit" value="Search">
+            </form>
+            {% if result %}
+                    {% for row in result %}
+                        <table>
+                            <tr>
+                                <td>{{ row.user }}</td>
+                                <td>{{ row.name }}</td>
+                            </tr>
+                        </table>
+                    {% endfor %}
+            {% elif error %}
+                <p>{{  error }}</p>
+            {% endif %}
+        </main>
+        <footer>
+            <p>&copy; 2024 MaSantéFamiliale</p>
+        </footer>
     {% else %}
-    <!-- redirect to the accounts/templates/registration/login.html -->
-    {% url 'login' as login_url %}
-    <script>
-        window.location.href = "{{ login_url }}";
-    </script>
+        <!-- redirect to the accounts/templates/registration/login.html -->
+        {% url 'login' as login_url %}
+        <script>
+            window.location.href = "{{ login_url }}";
+        </script>
     {% endif %}
-    {% endblock %}
+{% endblock %}
 </body>
 
 </html>

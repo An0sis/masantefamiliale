@@ -15,7 +15,12 @@
   <!-- Add your Client model fields here -->
   {{ form.email.label_tag }} {{ form.email }}
   {{ form.phone.label_tag }} {{ form.phone }}
-  {{ form.address.label_tag }} {{ form.address }}
+{{ form.name.label_tag }} {{ form.name }}
+{{ form.lastname.label_tag }} {{ form.lastname }}
+{{ form.father_name.label_tag }} {{ form.father_name }}
+{{ form.mother_name.label_tag }} {{ form.mother_name }}
+{{ form.brother_sister.label_tag }} {{ form.brother_sister }}
+
   <button type="submit">Sign Up</button>
 </form>
 {% endblock %}
