@@ -15,11 +15,12 @@ class ClientForm(forms.ModelForm):
         model = Client
         fields = (
             'user', 'email', 'phone', 'name', 'lastname', 'birthdate', 'father_name', 'mother_name', 'brother_sister',
-            'diseases')  # replace with your actual fields
+            'gender', 'diseases')  # replace with your actual fields
 
 
 class CombinedForm(UserCreationForm):
     password1 = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
+
     class Meta(UserCreationForm.Meta):
         model = User
         fields = UserCreationForm.Meta.fields + ('email',)
@@ -35,6 +36,7 @@ class CombinedForm(UserCreationForm):
         self.fields['father_name'] = forms.CharField(required=False)
         self.fields['mother_name'] = forms.CharField(required=False)
         self.fields['brother_sister'] = forms.CharField(required=False)
+        self.fields['gender'] = forms.BooleanField()
         self.fields['diseases'] = forms.ModelMultipleChoiceField(
             queryset=Disease.objects.all(),
             widget=forms.CheckboxSelectMultiple,
@@ -63,6 +65,7 @@ class CombinedForm(UserCreationForm):
                 'father_name': self.cleaned_data['father_name'],
                 'mother_name': self.cleaned_data['mother_name'],
                 'brother_sister': self.cleaned_data['brother_sister'],
+                'gender': self.cleaned_data['gender']
             }
         )
         if not created:
@@ -74,6 +77,7 @@ class CombinedForm(UserCreationForm):
             client.father_name = self.cleaned_data['father_name']
             client.mother_name = self.cleaned_data['mother_name']
             client.brother_sister = self.cleaned_data['brother_sister']
+            client.gender = self.cleaned_data['gender']
 
         diseases = self.cleaned_data.get('diseases', [])
         client.diseases.set(diseases)

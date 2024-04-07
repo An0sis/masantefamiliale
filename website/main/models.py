@@ -20,6 +20,7 @@ class Client(models.Model):
     father_name = models.CharField(max_length=50, blank=True, null=True)
     mother_name = models.CharField(max_length=50, blank=True, null=True)
     brother_sister = models.TextField(default='[]', blank=True, null=True)
+    gender = models.BooleanField()
     diseases = models.ManyToManyField(Disease, blank=True)
     
     def __str__(self):
