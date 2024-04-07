@@ -22,23 +22,31 @@
     {% if user.is_authenticated %}
         <header>
             <div class="logo">
-                <a href="/"><img src="{% static 'image/logo.png' %}" alt="MySantéFamilialeLogo"></a>
+                <a href="/"><img src="{% static 'image/logo_orange.png' %}" alt="MySantéFamilialeLogo"></a>
             </div>
-            <div class="disconnect_user">
-                <p><strong>{{ user.client.name }} {{ user.client.lastname }}</strong></p>
-                <button onclick="location.href = '/accounts/logout';" class="button btn_disconnect_patient">Deconnection</button>
+            <div class="disconnect">
+                <p>Docteur <strong>{{ user.client.name }} {{ user.client.lastname }}</strong></p>
+                <button  onclick="location.href = '/accounts/logout';" class="button btn_disconnect_doctor">Deconnection</button>
             </div>
         </header>
         <main>
-            <div class="Profil">
-                <h2 class="titleorange">Profil patient</h2>
-                <div class="info-box">
-                    <p class="name">{{ user.client.name }} {{ user.client.lastname }}</p>
-                    <p><b>Date de naissance</b> {{ user.client.birthdate }}</p>
-                    <p><b>Age</b> {{ age }} ans</p>
-                    <p><b>Sexe </b> {% if user.client.gender %} Homme {% else %} Femme {% endif %}</p>
+            <form class="d-flex" role="search" action="" method="post">
+                {% csrf_token %}
+                <input class="form-control me-2 search-bar" type="text" name="txtquery" value="{{ input_str }}"
+                       placeholder="Nom du patient"
+                       aria-label="Search">
+            </form>
+            {% if client %}
+                <div class="Profil">
+                    <h2 class="titleblue">Profil du patient</h2>
+                    <div class="info-box">
+                        <p class="name">{{ client.name }} {{ client.lastname }}</p>
+                        <p><b>Date de naissance</b> {{ client.birthdate }}</p>
+                        <p><b>Age</b> {{ age }} ans</p>
+                        <p><b>Sexe </b> {% if client.gender %} Homme {% else %} Femme {% endif %}</p>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
             <div class="details">
                 <div class="desease">
                     <div class="antecedent">
@@ -59,14 +67,36 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="age">
-                        <h2 class="titleorange">Age lors du diagnostique</h2>
+                    <div class="degree">
+                        <h2 class="titleorange">Degre de filiation</h2>
                         {% for disease in user_diseases %}
                             <div class="list">
+                                <p>Premier degree</p>
                             </div>
                         {% endfor %}
                         {% for disease in father_diseases %}
                             <div class="list">
+                                <p>Premier degree</p>
+                            </div>
+                        {% endfor %}
+                        {% for disease in mother_diseases %}
+                            <div class="list">
+                                {% if disease %}
+                                    <p>Premier degree</p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="age">
+                        <h2 class="titleorange">Age lors du diagnostique</h2>
+                        {% for disease in user_diseases %}
+                            <div class="list">
+                                <p>45 ans</p>
+                            </div>
+                        {% endfor %}
+                        {% for disease in father_diseases %}
+                            <div class="list">
+                                <p>45 ans</p>
                             </div>
                         {% endfor %}
                         {% for disease in mother_diseases %}
@@ -74,12 +104,11 @@
                             </div>
                         {% endfor %}
                     </div>
-
-                    <div class="tree">
-                        <h2 class="titlefamille">Ma famille</h2>
-                        <img src="{% static 'image/family_tree.png' %}" alt="Arbre généalogique">
-                    </div>
                 </div>
+            </div>
+            <div class="button">
+                <button class="btn">ajouter</button>
+                <button class="btn">modifier</button>
             </div>
         </main>
     {% else %}

@@ -12,8 +12,33 @@ main {
     padding-right: 50px;
 }
 
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.disconnect{
+    height: 100%;
+    padding-right: 50px;
+    white-space: nowrap;
+    text-align: right;
+    color: #E7302A;
+}
+
+.disconnect_user{
+    height: 100%;
+    padding-right: 50px;
+    white-space: nowrap;
+    text-align: right;
+    color: #3330C5;
+}
+
 .logo img {
     width: 50%;
+    margin-top: 30px;
+    margin-left: 30px;
     /* height: 100px; */
     /* object-fit: cover; */
     /* border-radius: 10px; */
@@ -28,8 +53,22 @@ main {
     /* border-radius: 1px; */
 }
 
+.search-bar {
+    width: 300px; /* adjust as needed */
+    height: 40px; /* adjust as needed */
+    background-color: #f8f9fa; /* adjust as needed */
+    border: none; /* adjust as needed */
+    color: #3330C5; /* adjust as needed */
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
 .titleorange {
     color: #E7302A;
+}
+
+.titleblue {
+    color: #3330C5;
 }
 
 .titlefamille {
@@ -63,9 +102,14 @@ main {
 
 .antecedent {
     margin-right: 20px;
-    width: 70%;
+    width: 45%;
 }
 .age {
+    margin-right: 20px;
+    width: 25%;
+}
+
+.degree {
     margin-right: 20px;
     width: 30%;
 }
@@ -84,7 +128,47 @@ main {
 }
 
 .btn {
+    background-color: #3330C5;
+    /* Couleur de fond orange */
+    border: none;
+    /* Supprime la bordure */
+    color: white;
+    /* Couleur du texte blanche */
+    padding: 5px 20px;
+    /* Espace à l'intérieur du bouton */
+    text-align: center;
+    /* Centre le texte */
+    text-decoration: none;
+    /* Supprime le soulignement */
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    /* Ajoute des coins arrondis */
+}
+
+.btn_disconnect_doctor {
     background-color: #E7302A;
+    /* Couleur de fond orange */
+    border: none;
+    /* Supprime la bordure */
+    color: white;
+    /* Couleur du texte blanche */
+    padding: 5px 20px;
+    /* Espace à l'intérieur du bouton */
+    text-align: center;
+    /* Centre le texte */
+    text-decoration: none;
+    /* Supprime le soulignement */
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    /* Ajoute des coins arrondis */
+}
+
+.btn_disconnect_patient {
+    background-color: #3330C5;
     /* Couleur de fond orange */
     border: none;
     /* Supprime la bordure */

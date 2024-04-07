@@ -36,7 +36,7 @@ class CombinedForm(UserCreationForm):
         self.fields['father_name'] = forms.CharField(required=False)
         self.fields['mother_name'] = forms.CharField(required=False)
         self.fields['brother_sister'] = forms.CharField(required=False)
-        self.fields['gender'] = forms.BooleanField()
+        self.fields['gender'] = forms.BooleanField(required=False)
         self.fields['diseases'] = forms.ModelMultipleChoiceField(
             queryset=Disease.objects.all(),
             widget=forms.CheckboxSelectMultiple,
