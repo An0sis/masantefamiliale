@@ -1,26 +1,61 @@
 <!-- templates/registration/signup.html -->
-{% block title %}Sign Up{% endblock %}
 
-{% block content %}
-    <h2>Sign up</h2>
+<!DOCTYPE>
+<html>
+
+<head>
+    {% load static %}
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{% static 'styles/signup_styles.css' %}">
+</head>
+
+<body>
+    {% block content %}
     <form method="post">
-        {% csrf_token %}
-        {% if form.errors %}
+        <div class="form">
+            {% csrf_token %}
+            {% if form.errors %}
             <p>ERRORS</p>
             {{ form.errors }}
-        {% endif %}
-        {{ form.username.label_tag }} {{ form.username }}
-        {{ form.password1.label_tag }} {{ form.password1 }}
-        <!-- Add your Client model fields here -->
-        {{ form.name.label_tag }} {{ form.name }}
-        {{ form.lastname.label_tag }} {{ form.lastname }}
-        {{ form.birthdate.label_tag }} {{ form.birthdate }}
-        {{  form.gender.label_tag }} {{ form.gender }}
-        {{ form.father_name.label_tag }} {{ form.father_name }}
-        {{ form.mother_name.label_tag }} {{ form.mother_name }}
-        {{ form.brother_sister.label_tag }} {{ form.brother_sister }}
-        {{ form.diseases.label_tag }} {{ form.diseases }}
-
-        <button type="submit">Sign Up</button>
+            {% endif %}
+            <div class="left">
+                <img src="{% static 'image/logo.png' %}" alt="logo">
+                <div class="inscription">
+                    <div class="field">
+                        {{ form.username.label_tag }} {{ form.username }}
+                    </div>
+                    <div class="field">
+                        {{ form.password1.label_tag }} {{ form.password1 }}
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="field">
+                    {{ form.name.label_tag }} {{ form.name }}
+                </div>
+                <div class="field">
+                    {{ form.lastname.label_tag }} {{ form.lastname }}
+                </div>
+                <div class="field">
+                    {{ form.birthdate.label_tag }} {{ form.birthdate }}
+                </div>
+                <div class="field">
+                    {{ form.father_name.label_tag }} {{ form.father_name }}
+                </div>
+                <div class="field">
+                    {{ form.mother_name.label_tag }} {{ form.mother_name }}
+                </div>
+                <div class="field">
+                    {{ form.brother_sister.label_tag }} {{ form.brother_sister }}
+                </div>
+                <div class="field">
+                    {{ form.diseases.label_tag }} {{ form.diseases }}
+                </div>
+            </div>
+        </div>
+        <button class="btn" type="submit">Sign Up</button>
     </form>
-{% endblock %}
+    {% endblock %}
+</body>
+
+</html>

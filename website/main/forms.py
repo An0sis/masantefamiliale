@@ -28,18 +28,20 @@ class CombinedForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         del self.fields['password2']
+        self.fields['username'].label = "Nom d'utilisateur"
         self.fields['email'] = forms.EmailField(required=False)
         self.fields['phone'] = forms.CharField(required=False)
-        self.fields['name'] = forms.CharField()
-        self.fields['lastname'] = forms.CharField()
-        self.fields['birthdate'] = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-        self.fields['father_name'] = forms.CharField(required=False)
-        self.fields['mother_name'] = forms.CharField(required=False)
-        self.fields['brother_sister'] = forms.CharField(required=False)
-        self.fields['gender'] = forms.BooleanField(required=False)
+        self.fields['name'] = forms.CharField(label="Prénom", widget=forms.TextInput(attrs={'class': 'three'}))
+        self.fields['lastname'] = forms.CharField(label="Nom", widget=forms.TextInput(attrs={'class': 'three'}))
+        self.fields['birthdate'] = forms.DateField(label="Date de naissance",widget=forms.DateInput(attrs={'type': 'date', 'class': 'three'}))
+        self.fields['father_name'] = forms.CharField(label="Père", required=False, widget=forms.TextInput(attrs={'class': 'last'}))
+        self.fields['mother_name'] = forms.CharField(label="Mère", required=False, widget=forms.TextInput(attrs={'class': 'last'}))
+        self.fields['brother_sister'] = forms.CharField(label="Frères/Sœurs",required=False, widget=forms.TextInput(attrs={'class': 'last'}))
+        self.fields['gender'] = forms.BooleanField(label="Genre", required=False)
         self.fields['diseases'] = forms.ModelMultipleChoiceField(
             queryset=Disease.objects.all(),
             widget=forms.CheckboxSelectMultiple,
+            label="Maladies",
             required=False
         )
 

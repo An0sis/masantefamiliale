@@ -1,0 +1,101 @@
+/* styles.css */
+
+img {
+    width: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* width: 100%;
+    height: 100vh; */
+    /* flex-direction: column; */
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: #EDEDED;
+}
+
+.inscription {
+    display: flex;
+    flex-direction: column;
+    border: 1px dotted #3330C5;
+    padding: 20px;
+    margin-top: 20px;
+    
+}
+
+.field {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    color:#3330C5
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    /* flex-direction: column; */
+    justify-content: center;
+    height: 100vh;
+    /* width: 100%; */
+    /* padding: 50px; */
+}
+
+.left, .right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+    justify-content: center;
+}
+
+.right {
+    background-color: white;
+    padding : 10px;
+
+}
+
+.form > div {
+    margin: 10px;
+}
+
+.form > div > .inscription > .field > input {
+     width: 100%; 
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #3330C5;
+    height: 30px;
+}
+
+.form > div > .field > input {
+     width: 100%; 
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #3330C5;
+    height: 30px;
+}
+
+.btn {
+    background-color: #E7302A;
+    /* Couleur de fond orange */
+    border: none;
+    /* Supprime la bordure */
+    color: white;
+    /* Couleur du texte blanche */
+    padding: 5px 20px;
+    /* Espace à l'intérieur du bouton */
+    text-align: center;
+    /* Centre le texte */
+    text-decoration: none;
+    /* Supprime le soulignement */
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    /* Ajoute des coins arrondis */
+}
